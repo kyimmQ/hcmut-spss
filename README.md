@@ -1,8 +1,14 @@
 # Description.
 
+231 CO3001 - Software Engineering Assignment
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Install all the required dependencies.
 
 ### `npm start`
 
