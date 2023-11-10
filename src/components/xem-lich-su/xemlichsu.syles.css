@@ -1,0 +1,30 @@
+.dropdown {
+  width: 160px;
+  position: relative;
+  /* height: 160px; */
+}
+
+.dropdown .dropdown-title-wrapper {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+
+.dropdown-content {
+  position: absolute;
+}
+
+.dropdown-content .dropdown-item {
+  height: 40px;
+  width: 160px;
+  padding: 5px 10px;
+  background-color: white;
+}
+.dropdown-title-wrapper:hover {
+  background-color: #d9d9d9;
+}
+.dropdown-item:hover {
+  background-color: #d9d9d9;
+}

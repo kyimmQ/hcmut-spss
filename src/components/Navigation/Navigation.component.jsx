@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
+
+import XemLichSu from "../xem-lich-su/xemlichsu.component";
 import { UserContext } from "../../contexts/user.context";
 
-import Button from "../Button/Button.component";
 import { signOutUser } from "../../ultis/firebase/firebase";
 
 import { Link } from "react-router-dom";
@@ -24,10 +25,10 @@ const Navigation = (props) => {
         </div>
       ) : (
         <div className="link-container">
-          <h1>Xem lịch sử</h1>
-          <Button type="button" onClick={signOutUser}>
+          <XemLichSu />
+          <button type="button" onClick={signOutUser}>
             Đăng xuất
-          </Button>
+          </button>
         </div>
       )}
     </div>
