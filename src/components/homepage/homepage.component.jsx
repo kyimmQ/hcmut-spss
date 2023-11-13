@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import Navigation from "../Navigation/Navigation.component";
-import Footer from "../Footer/Footer.component";
+import Navigation from "../navigation/navigation.component";
+import Footer from "../footer/footer.component";
 import Popup from "../popup/popup.component";
-import Button from "../Button/Button.component";
+import Button from "../button/button.component";
 import { UserContext } from "../../contexts/user.context";
 
 import {
