@@ -1,9 +1,8 @@
 import React, { useContext, useState } from "react";
-import Navigation from "../navigation/navigation.component";
-import Footer from "../footer/footer.component";
+import Navigation from "../Navigation/Navigation.component";
+import Footer from "../Footer/Footer.component";
 import Popup from "../popup/popup.component";
-import Button from "../button/button.component";
-import FileUpLoad from "../file-upload/fileupload.component";
+import Button from "../Button/Button.component";
 import { UserContext } from "../../contexts/user.context";
 
 import {
@@ -28,8 +27,9 @@ const Homepage = (props) => {
   return (
     <div className="homepage">
       <Navigation />
-      <h1>HCMUT_SSPS</h1>
-      <h2>Student Smart Printing Service</h2>
+      <div className="homepage_body">
+      <h1 className="title">HCMUT_SSPS</h1>
+      <h2 className="subtitle">Student Smart Printing Service</h2>
       {!currentUser ? (
         <Button type="button" buttonType={"body"} onClick={logGoogleUser}>
           Đăng nhập
@@ -59,9 +59,7 @@ const Homepage = (props) => {
           <div className="popup-title">
             <h1>Tải tài liệu lên</h1>
           </div>
-          <div className="popup-body">
-            <FileUpLoad />
-          </div>
+          <div className="popup-body">Body</div>
           <div className="popup-footer">Footer</div>
         </Popup>
       )}
@@ -74,6 +72,7 @@ const Homepage = (props) => {
           <div className="popup-footer">Footer</div>
         </Popup>
       )}
+      </div>
       <Footer />
     </div>
   );

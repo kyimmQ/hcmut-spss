@@ -7,6 +7,8 @@ import { signOutUser } from "../../ultis/firebase/firebase";
 
 import { Link } from "react-router-dom";
 
+import "./navigation.styles.css";
+
 const Navigation = (props) => {
   const { currentUser } = useContext(UserContext);
   return (
@@ -26,7 +28,7 @@ const Navigation = (props) => {
       ) : (
         <div className="link-container">
           <XemLichSu />
-          <button type="button" onClick={signOutUser}>
+          <button type="button" onClick={signOutUser} className="button-custom">
             Đăng xuất
           </button>
         </div>
