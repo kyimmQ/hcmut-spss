@@ -7,21 +7,23 @@ import { signOutUser } from "../../ultis/firebase/firebase";
 
 import { Link } from "react-router-dom";
 
+import logo from '../../assets/spss_logo.svg';
+
 import "./navigation.styles.css";
 
 const Navigation = (props) => {
   const { currentUser } = useContext(UserContext);
   return (
     <div className="navigation">
-      <Link className="logo-container" to="/">
-        Logo here
-      </Link>
+      <div className="logo-container">
+        <img src={logo} alt="Logo" className="logo" />
+      </div>
       {!currentUser ? (
         <div className="link-container">
-          <Link className="nav-link" to="/">
+          <Link className="nav-link" to="/" id="box1">
             Trang chủ
           </Link>
-          <Link className="nav-link" to="/contact">
+          <Link className="nav-link" to="/contact" id="box2">
             Liên hệ
           </Link>
         </div>
