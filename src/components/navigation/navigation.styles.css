@@ -23,7 +23,7 @@
     width: 200px;
     height: 100px;
     color: #1488DB;
-    font-size: 30px;
+    font-size: 25px;
     font-family: Source Serif Pro;
     font-weight: 600;
     word-wrap: break-word;
@@ -36,6 +36,25 @@
   
 .nav-link:hover {
     background-color: rgb(217, 217, 217);
-    color: #0067B0;
+}
+
+.button-custom1 {
+    background: rgba(217, 217, 217, 0);
+    width: 200px;
+    height: 100px;
+    color: #1488DB;
+    font-size: 25px;
+    font-family: Source Serif Pro;
+    font-weight: 600;
+    word-wrap: break-word;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
 }
   
+.button-custom1:hover {
+    background-color: rgb(217, 217, 217);
+}
