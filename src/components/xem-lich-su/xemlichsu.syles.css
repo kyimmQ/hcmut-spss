@@ -1,15 +1,25 @@
 .dropdown {
   width: 160px;
-  position: relative;
-  /* height: 160px; */
+  height: 100px;
+  position: absolute;
+  top: 10px; 
+  right: 100px
 }
 
 .dropdown .dropdown-title-wrapper {
-  height: 80px;
+  height:60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 5px 10px;
+}
+
+.dropdown-title {
+  color: #1488DB;
+  font-size: 20px;
+  font-family: Source Serif Pro;
+  font-weight: 600;
+  word-wrap: break-word
 }
 
 .dropdown-content {
@@ -19,12 +29,18 @@
 .dropdown-content .dropdown-item {
   height: 40px;
   width: 160px;
-  padding: 5px 10px;
+  padding: 10px 10px;
   background-color: white;
+  color: #1488DB;
+  font-size: 20px;
+  font-family: Source Serif Pro;
+  font-weight: 600;
+  word-wrap: break-word
 }
 .dropdown-title-wrapper:hover {
-  background-color: #d9d9d9;
+  background-color: rgb(217, 217, 217);
 }
 .dropdown-item:hover {
-  background-color: #d9d9d9;
+  background-color: rgb(217, 217, 217);
+  color: #0067B0;
 }
