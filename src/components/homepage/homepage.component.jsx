@@ -3,7 +3,6 @@ import Navigation from "../navigation/navigation.component";
 import Footer from "../footer/footer.component";
 import Popup from "../popup/popup.component";
 import Button from "../button/button.component";
-import FileUpLoad from "../file-upload/fileupload.component";
 import { UserContext } from "../../contexts/user.context";
 
 import {
@@ -28,52 +27,52 @@ const Homepage = (props) => {
   return (
     <div className="homepage">
       <Navigation />
-      <h1>HCMUT_SSPS</h1>
-      <h2>Student Smart Printing Service</h2>
-      {!currentUser ? (
-        <Button type="button" buttonType={"body"} onClick={logGoogleUser}>
-          Đăng nhập
-        </Button>
-      ) : (
-        <div>
-          <Button
-            type="button"
-            buttonType={"body"}
-            onClick={() => setInTaiLieu(true)}
-          >
-            In tài liệu
+      <div className="homepage_body">
+        <h1 className="title">HCMUT SSPS</h1>
+        <h2 className="subtitle">Student Smart Printing Service</h2>
+        {!currentUser ? (
+          <Button type="button" buttonType={"body"} onClick={logGoogleUser} className="button-custom">
+            Đăng nhập
           </Button>
-          <Button
-            type="button"
-            buttonType={"body"}
-            onClick={() => setMuaGiayIn(true)}
-          >
-            Mua giấy in
-          </Button>
-        </div>
-      )}
+        ) : (
+          <div>
+            <Button
+              type="button"
+              buttonType={"body"}
+              onClick={() => setInTaiLieu(true)}
+            >
+              In tài liệu
+            </Button>
+            <Button
+              type="button"
+              buttonType={"body"}
+              onClick={() => setMuaGiayIn(true)}
+            >
+              Mua giấy in
+            </Button>
+          </div>
+        )}
 
-      {/* chưa hoàn thành */}
-      {inTaiLieu && (
-        <Popup openPopup={setInTaiLieu}>
-          <div className="popup-title">
-            <h1>Tải tài liệu lên</h1>
-          </div>
-          <div className="popup-body">
-            <FileUpLoad />
-          </div>
-          <div className="popup-footer">Footer</div>
-        </Popup>
-      )}
-      {muaGiayIn && (
-        <Popup openPopup={setMuaGiayIn}>
-          <div className="popup-title">
-            <h1>Mua giấy in</h1>
-          </div>
-          <div className="popup-body">Body</div>
-          <div className="popup-footer">Footer</div>
-        </Popup>
-      )}
+        {/* chưa hoàn thành */}
+        {inTaiLieu && (
+          <Popup openPopup={setInTaiLieu}>
+            <div className="popup-title">
+              <h1>Tải tài liệu lên</h1>
+            </div>
+            <div className="popup-body">Body</div>
+            <div className="popup-footer">Footer</div>
+          </Popup>
+        )}
+        {muaGiayIn && (
+          <Popup openPopup={setMuaGiayIn}>
+            <div className="popup-title">
+              <h1>Mua giấy in</h1>
+            </div>
+            <div className="popup-body">Body</div>
+            <div className="popup-footer">Footer</div>
+          </Popup>
+        )}
+      </div>
       <Footer />
     </div>
   );

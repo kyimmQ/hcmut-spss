@@ -1,2 +1,57 @@
-.homepage {
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.homepage_body {
+    background-image: url('/public/image/Homepage_background.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+
+/* .content {
+    
+} */
+
+.title{
+    color: #F1F6F9;
+    font-size: 80px;
+    font-family: Suez One;
+    font-weight: 600;
+    letter-spacing: 8px;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 45px;
+    font-family: Crimson Text;
+    font-weight: 700;
+    word-wrap: break-word;
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+.button-custom {
+    background: rgba(216, 217, 218, 0.50); 
+    border-radius: 50px;
+    width: 230px;
+    height: 90px;
+    color: white;
+    font-size: 30px;
+    font-family: Source Serif Pro;
+    font-weight: 600;
+}
+
+.button-custom:hover {
+    background: rgba(216, 217, 218, 0.75); 
 }
