@@ -20,11 +20,11 @@ You may also see any lint errors in the console.
 
 
 ## Contributers
-Võ Nguyễn Đoan Thảo - 2110546
-Nguyễn Châu Long - 2111666
-Nguyễn Hoài Trung - 2110631
-Phạm Phú Khang - 2110245
-Nguyễn Trần Bảo Ngọc - 2111860
-Lê Duy Anh - 2112762
+Võ Nguyễn Đoan Thảo - 2110546\
+Nguyễn Châu Long - 2111666\
+Nguyễn Hoài Trung - 2110631\
+Phạm Phú Khang - 2110245\
+Nguyễn Trần Bảo Ngọc - 2111860\
+Lê Duy Anh - 2112762\
 Lê Phương Các - 2110833
 
