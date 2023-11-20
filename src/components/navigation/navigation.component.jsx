@@ -30,7 +30,7 @@ const Navigation = (props) => {
       ) : (
         <div className="link-container">
           <XemLichSu />
-          <button type="button" onClick={signOutUser} className="button-custom">
+          <button type="button" onClick={signOutUser} className="button-custom1">
             Đăng xuất
           </button>
         </div>

@@ -40,6 +40,7 @@ const Homepage = (props) => {
               type="button"
               buttonType={"body"}
               onClick={() => setInTaiLieu(true)}
+              className="button-custom"
             >
               In tài liệu
             </Button>
@@ -47,6 +48,7 @@ const Homepage = (props) => {
               type="button"
               buttonType={"body"}
               onClick={() => setMuaGiayIn(true)}
+              className="button-custom"
             >
               Mua giấy in
             </Button>
