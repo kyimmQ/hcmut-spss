@@ -5,13 +5,13 @@ import Popup from "../popup/popup.component";
 import Button from "../button/button.component";
 
 
-const ThongSoIn = () => {
+const ThongSoIn = (props) => {
     // useState var
     const [xacNhanGiaoDich, setXacNhanGiaoDich] = useState(false);
     let printProperties ={};
 
     return(
-        <Popup >
+        <Popup openPopup={props.openPopup}>
             <div className="container">
                 <div className="title">Tùy chỉnh thông số in</div>
                 <div className="main-page">
@@ -75,12 +75,25 @@ const ThongSoIn = () => {
                     <input type="checkbox" name="" id="" />
                 </div>
                 <div className="btn-container">
-                    <Button className='btn-custome'>Xác nhận</Button>
-                    <Button className='btn-custome'>Quay lại</Button>
+                    <Button className='btn-custome' onClick={()=>setXacNhanGiaoDich(true)}>Xác nhận</Button>
+                    <Button className='btn-custome' >Quay lại</Button>
                 </div>
+
+                {xacNhanGiaoDich &&(
+                    <Popup>
+                        <h1>Hello</h1>
+                    </Popup>
+                    )
+                };
+
             </div>
             
         </Popup>
+
+        
+            
+        
+
     );
 
 
