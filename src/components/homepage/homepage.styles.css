@@ -57,3 +57,38 @@
 .button-custom:hover {
     background: rgba(216, 217, 218, 0.75); 
 }
+
+.popup-footer {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+/* LongCSS */
+
+.popup-title {
+    color: #1488db;
+    text-align: center;
+}
+
+.popup-body {
+    color: black;
+    text-align: center;
+    min-height: 70vh;
+}
+
+.button-footer {
+    width: 150px;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    background-color: #106ec1;
+    color: white;
+    font-size: 16px;
+    margin: 0 40px;
+}
+
+.button-footer:hover {
+    cursor: pointer;
+    background-color: rgba(16, 110, 193, 0.5);
+}
