@@ -72,7 +72,10 @@ const Homepage = (props) => {
               <h1>Tải tài liệu lên</h1>
             </div>
             <div className="popup-body"><Upload/></div>
-            <div className="popup-footer">Footer</div>
+            <div className="popup-footer"> 
+            <button className="button-footer" onClick={() => setChonMayIn(true)}>Xác nhận</button>
+              <button className="button-footer" onClick={() => setInTaiLieu(false)}>Hủy</button>
+              </div>
           </Popup>
         )}
         {muaGiayIn && (

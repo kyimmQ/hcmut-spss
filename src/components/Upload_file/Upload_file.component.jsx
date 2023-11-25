@@ -32,14 +32,6 @@ const Upload_file  = () => {
         </div>
     )
 }
-const File_table = () => {
-    return(
-        <div className='select-file-table'>
-
-        </div>
-        
-    )  
-}
 const File_item=(
     {
         file_name='',
