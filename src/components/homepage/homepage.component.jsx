@@ -5,6 +5,7 @@ import Popup from "../popup/popup.component";
 import Button from "../button/button.component";
 import XacNhanGiaoDich from "../xac-nhan-giao-dich/xacnhangiaodich.component";
 import ChonMayIn from "../chon-may-in/chonmayin.component";
+import Upload from "../Upload_file/Upload_file.component";
 import { UserContext } from "../../contexts/user.context";
 
 import {
@@ -70,7 +71,7 @@ const Homepage = (props) => {
             <div className="popup-title">
               <h1>Tải tài liệu lên</h1>
             </div>
-            <div className="popup-body">Body</div>
+            <div className="popup-body"><Upload/></div>
             <div className="popup-footer">Footer</div>
           </Popup>
         )}
