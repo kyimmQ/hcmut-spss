@@ -19,6 +19,7 @@
 
 .upload-file .upload-text{
     color: #1488db;
+    margin: 0px 0px 5px 0px;
 }
 
 .text-title{
@@ -26,7 +27,7 @@
     font-weight: 600;
     border: none;
     width: 80%;
-    height: 25px;
+    height: 5%;
     text-align:left;
 
 }
@@ -34,20 +35,19 @@
 .upload-file-button {
     text-align: center;
     position: relative;
-    width: 150px;
-    height: 40px;
+    width: 10%;
+    height: 40%;
     border-radius: 50px;
     border: none;
     background-color: #106ec1;
     color: white;
     font-size: 16px;
-    padding: 10px;
+    padding: 4px;
 }
 
 input[type="file"] {
     display: none;
 }
-
 .select-file-table{
     border: none;
     align-items: center;
@@ -74,7 +74,8 @@ input[type="file"] {
     border-color: #17ae81;
     background-color:#edfcf3 ;
     width: 80%;
-    height: 55px;
+    height: 100%;
+    padding: 0px 0px 10px 0px;
 }
 .file-box-Uncompleted{
     display: flex;
@@ -85,7 +86,8 @@ input[type="file"] {
     border-color: #b7b3b3   ;
     background-color:#f3f4f8 ;
     width: 80%;
-    height: 55px;
+    height: 100%;
+    padding: 0px 0px 10px 0px;
 }
 .file-box-Canceled{
     display: flex;
@@ -96,13 +98,20 @@ input[type="file"] {
     border-color: #f00000;
     background-color:#fdf0f0 ;
     width: 80%;
-    height: 55px;
+    height: 100%;
+    padding: 0px 0px 10px 0px;
 }
 .file-info{
     display: flex;
     /* align-items: center;  */
     justify-content: space-evenly;
     flex-direction: row;
+}
+.file-info-box{
+    display: flex;
+    /* align-items: center;  */
+    justify-content: space-evenly;
+    flex-direction: column;
 }
 
 .file-box-Uncompleted .file-name{
@@ -135,7 +144,7 @@ input[type="file"] {
     border: none;
     width: 75px;
     height: 25px;
-    text-align: center;
+    text-align: left;
     color: #17ae81;
 }
 
@@ -144,7 +153,7 @@ input[type="file"] {
     border: none;
     width: 75px;
     height: 25px;
-    text-align: center;
+    text-align: left;
     color: #b7b3b3;
 }
 
@@ -152,7 +161,7 @@ input[type="file"] {
     border: none;
     width: 75px;
     height: 25px;
-    text-align: center;
+    text-align: left;
     color: #f00000;
 }
 
@@ -160,10 +169,11 @@ input[type="file"] {
 .select-box{
     border: 1px solid;
     border-color: black;
-    width: 120px;
-    height: 55px;
+    width: 15%;
+    height: 100%;
     align-items: center;
     justify-content: space-around;
+    padding: 0px 0px 9.85px 0px;
 }
 .frame {
     background-color: #dbdbdb;
@@ -184,11 +194,11 @@ input[type="file"] {
     background-color:#1488db;
     border-radius: 50px;
     height: 7px;
-    width: 400px;
+    width: 40%;
 }
 .Canceled-frame{
     background-color: #f00000;
     border-radius: 50px;
     height: 7px;
-    width: 18px;
+    width: 5%;
 }

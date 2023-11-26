@@ -25,10 +25,16 @@ export default Upload
 const Upload_file  = () => {
     return(
         <div className='upload-file'> 
-            <img src="./image/icon/icon_upload.png" alt="Tải lên"/>
+            <img src="./image/icon/icon_upload.png" alt="Tải lên" width='40' height='45'/>
             <div className='upload-text'>Kéo thả file tại đây</div>
             <div className='upload-text'>-OR-</div>
-            <label className='upload-file-button'> <input type='file' multiple="multiple"/> Tải lên file</label>
+            
+            <form action='' encType="multipart/form-data" method='post'> <label className='upload-file-button'> 
+            <input type='file' multiple="multiple" accept='.doc,.ppt,.pdf' onClick="this.form.submit()" /> Tải lên file
+            </label> 
+            </form> 
+            <br/>
+            
         </div>
     )
 }
