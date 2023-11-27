@@ -10,14 +10,17 @@ import { UserContext } from "../../contexts/user.context";
 import {
   signInWithGooglePopup,
   createUserFromAuth,
+  db,
+  getPrinters,
 } from "../../ultis/firebase/firebase";
 
 import "./homepage.styles.css";
+import MuaGiayIn from "../mua-giay-in/muagiayin.component";
 
 // sign in function
 const logGoogleUser = async () => {
   const { user } = await signInWithGooglePopup();
-  createUserFromAuth(user);
+  createUserFromAuth(user, { numOfPaper: 500 });
 };
 
 const Homepage = (props) => {
@@ -28,6 +31,7 @@ const Homepage = (props) => {
   const [xacNhanGiaoDich, setXacNhanGiaoDich] = useState(false);
   // user context for different ui
   const { currentUser } = useContext(UserContext);
+
   return (
     <div className="homepage">
       <Navigation />
@@ -76,11 +80,15 @@ const Homepage = (props) => {
         )}
         {muaGiayIn && (
           <Popup openPopup={setMuaGiayIn}>
-            <div className="popup-title">
+            <div className="popup-title muagiayin-popup-title">
               <h1>Mua giấy in</h1>
             </div>
-            <div className="popup-body">Body</div>
-            <div className="popup-footer">Footer</div>
+            <div className="popup-body">
+              <MuaGiayIn props={{ setMuaGiayIn }} />
+            </div>
+            {/* <div className="popup-footer">
+              
+            </div> */}
           </Popup>
         )}
 
@@ -90,7 +98,7 @@ const Homepage = (props) => {
               <h1>Chọn máy in</h1>
             </div>
             <div className="popup-body">
-              <ChonMayIn/>
+              <ChonMayIn />
             </div>
             <div className="popup-footer">
               <button className="button-footer">Xác nhận</button>
@@ -105,7 +113,7 @@ const Homepage = (props) => {
               <h1>Xác nhận giao dịch</h1>
             </div>
             <div className="popup-body">
-              <XacNhanGiaoDich/>
+              <XacNhanGiaoDich />
             </div>
             <div className="popup-footer">
               <button className="button-footer">Xác nhận</button>

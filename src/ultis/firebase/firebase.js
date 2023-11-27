@@ -6,7 +6,17 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  query,
+  collection,
+  onSnapshot,
+  orderBy,
+  addDoc,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCga3kK8X8j8ye2GMIH6ptAQNWxu7VSJFs",
@@ -20,7 +30,7 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 // Initialize Firestore
-const db = getFirestore();
+export const db = getFirestore();
 
 // initialize a provider
 const googleProvider = new GoogleAuthProvider();
@@ -57,3 +67,55 @@ export const onAuthStateChangedListener = (callback) => {
   return onAuthStateChanged(auth, callback);
 };
 export const signOutUser = async () => await signOut(auth);
+
+export const getPrinters = (coso) => {
+  const printersRef = collection(
+    db,
+    `printers/location${coso}/printersAtLocation${coso}`
+  );
+  const queryPrinters = query(printersRef);
+  let printersList = [];
+  onSnapshot(queryPrinters, (snapshot) => {
+    snapshot.forEach((doc) => {
+      printersList.push({ ...doc.data() });
+    });
+  });
+  return printersList;
+};
+
+export const getUserInfo = (currentUser) => {
+  if (currentUser) {
+    const usersRef = collection(db, "users");
+    const queryUsers = query(usersRef, orderBy("date"));
+    onSnapshot(queryUsers, (snapshot) => {
+      snapshot.forEach((doc) => {
+        if (doc.id == currentUser.uid) return { ...doc.data() };
+      });
+    });
+  } else {
+    console.log("No user logged in");
+  }
+};
+
+export const getBuyHistory = (currentUser) => {
+  if (currentUser) {
+    const hisRef = collection(db, `users/${currentUser.uid}/buyHistory`);
+    const queryBuy = query(hisRef, orderBy("date", "desc"));
+    let buyHis = [];
+    onSnapshot(queryBuy, (snap) => {
+      snap.forEach((doc) => {
+        const { date, giatien, khogiay, paid } = doc.data();
+        let { soluonggiay } = doc.data();
+        if (khogiay == "A4") soluonggiay = Number(soluonggiay);
+        else if (khogiay == "A3") soluonggiay = Number(soluonggiay) * 2;
+        else soluonggiay = Number(soluonggiay) / 2;
+        buyHis.push({ date, giatien, soluonggiay, paid, ma: doc.id });
+      });
+    });
+    return buyHis;
+  }
+};
+
+export const updateBuyHistory = async (currentUser, data) => {
+  await addDoc(collection(db, `users/${currentUser.uid}/buyHistory`), data);
+};
