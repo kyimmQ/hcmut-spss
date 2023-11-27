@@ -1,0 +1,42 @@
+.muagiayin_container {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80vw;
+  height: 70vh;
+}
+.muagiay-wrapper {
+  padding: 2vw;
+  margin: 3vw;
+  border-radius: 30px;
+  border: 1px solid #d9d9d9;
+  width: 40vw;
+}
+.cart-wrapper {
+  padding: 2vw;
+  margin: 3vw;
+  border-radius: 30px;
+  border: 1px solid #d9d9d9;
+  width: 40vw;
+  height: 40vh;
+}
+.khogiay {
+  display: flex;
+  justify-content: space-evenly;
+}
+.lable-text {
+  display: inline;
+}
+th {
+  background-color: #f2f2f2;
+  border: 1px solid gray;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Style table data cells */
+td {
+  border: 1px solid gray;
+  padding: 10px;
+}

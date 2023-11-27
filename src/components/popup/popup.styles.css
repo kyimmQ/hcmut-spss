@@ -25,3 +25,9 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.popup-footer {
+  color: black;
+}
+.popup-title {
+}

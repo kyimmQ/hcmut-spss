@@ -6,10 +6,10 @@ const Popup = (props) => {
   return (
     <div className="popup-background">
       <div className="popup-container">
+        {props.children}
         <div className="close-btn">
           <button onClick={() => openPopup(false)}>X</button>
         </div>
-        {props.children}
       </div>
     </div>
   );
