@@ -41,5 +41,15 @@
 .popup-footer {
   color: black;
 }
+
 .popup-title {
+  color: #1488db;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.popup-body {
+  color: black;
+  text-align: center;
+  min-height: 70vh;
 }
