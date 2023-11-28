@@ -67,18 +67,6 @@
 
 /* LongCSS */
 
-.popup-title {
-  color: #1488db;
-  text-align: center;
-  margin-top: 15px;
-}
-
-.popup-body {
-  color: black;
-  text-align: center;
-  min-height: 70vh;
-}
-
 .button-footer {
   width: 150px;
   height: 40px;

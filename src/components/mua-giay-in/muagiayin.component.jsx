@@ -124,15 +124,16 @@ const MuaGiayIn = (props) => {
       </form>
       {openXacNhan && (
         <Popup openPopup={openXacNhan}>
-          <div className="popup-title">
+          <div className="popup-title title-thanhtoan">
             <h1>Xác nhận thanh toán</h1>
           </div>
 
-          <div className="popup-body">
-            Vui lòng kiểm tra tài khoản BKPay của bạn để thanh toán
+          <div className="popup-body body-thanhtoan">
+            <h2>Vui lòng kiểm tra tài khoản BKPay của bạn để thanh toán</h2>
           </div>
-          <div className="popup-footer">
-            <button type="button" onClick={() => setOpenXacNhan(false)}>
+
+          <div className="popup-footer footer-thanhtoan">
+            <button type="button" className="button-footer" onClick={() => setOpenXacNhan(false)}>
               Quay lại
             </button>
           </div>
