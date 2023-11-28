@@ -7,7 +7,7 @@
   height: 70vh;
 }
 .muagiay-wrapper {
-  padding: 2vw;
+  padding: 4vw 2vw;
   margin: 3vw;
   border-radius: 30px;
   border: 1px solid #d9d9d9;
@@ -19,14 +19,48 @@
   border-radius: 30px;
   border: 1px solid #d9d9d9;
   width: 40vw;
-  height: 40vh;
+  min-height: 40vh;
+  max-height: 58vh;
+  height: fit-content;
 }
-.khogiay {
+.khogiay, .soluonggiay, .giatien {
   display: flex;
-  justify-content: space-evenly;
+  color: #1488db;
+  margin-bottom: 60px;
 }
 .lable-text {
   display: inline;
+  color: #1488db;
+  margin-right: 200px;
+  margin-left: 20px;
+  font-size: 25px;
+}
+.lable-text-giatien {
+  margin-right: 170px;
+}
+
+.table-soluong, .table-khogiay {
+  width: 70px;
+  height: 32px;
+  border-radius: 20px;
+  border: 1px solid #cacaca;
+  font-size: 15px;
+}
+.table-soluong {
+  padding-left: 12px;
+}
+.table-khogiay {
+  padding-left: 20px;
+}
+
+.giatien {
+  display: flex;
+}
+.giatien-total {
+  font-size: 24px;
+  font-weight: 600;
+  color: #686868;
+  margin: auto;
 }
 th {
   background-color: #f2f2f2;
@@ -35,8 +69,54 @@ th {
   text-align: left;
 }
 
+.lable-text-cart {
+  margin: 0;
+}
+
 /* Style table data cells */
+.table-cart {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+  border: 1px solid #cacaca;
+  border-radius: 10px;
+}
+
 td {
   border: 1px solid gray;
   padding: 10px;
+}
+
+thead {
+  color: #1488db;
+  font-size: 20px;
+}
+
+th {
+  padding: 12px 25px;
+}
+
+.in-table {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.in-table-price {
+  color: #686868;
+}
+
+.add-button {
+  width: 120px;
+  height: 45px;
+  color: #e5f4ff;
+  background-color: #1488db;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+}
+
+.add-button:hover {
+  cursor: pointer;
+  background-color: rgba(16, 110, 193, 0.5);
 }

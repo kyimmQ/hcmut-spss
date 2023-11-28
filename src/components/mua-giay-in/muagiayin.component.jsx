@@ -57,7 +57,7 @@ const MuaGiayIn = (props) => {
       <form onSubmit={handleSummit}>
         <div className="muagiayin_container">
           <div className="muagiay-wrapper">
-            <span className="khogiay">
+            <div className="khogiay">
               <label>
                 <h2 className="lable-text">Khổ giấy:</h2>
                 <select
@@ -65,14 +65,15 @@ const MuaGiayIn = (props) => {
                   defaultValue={"A4"}
                   onChange={handleChange}
                   value={khogiay}
+                  className="table-khogiay"
                 >
                   <option value="A3">A3</option>
                   <option value="A4">A4</option>
                   <option value="A5">A5</option>
                 </select>
               </label>
-            </span>
-            <span className="soluonggiay">
+            </div>
+            <div className="soluonggiay">
               <label>
                 <h2 className="lable-text">Số lượng:</h2>
                 <input
@@ -82,17 +83,21 @@ const MuaGiayIn = (props) => {
                   name="soluonggiay"
                   value={soluonggiay}
                   min="0"
+                  className="table-soluong"
                 />
               </label>
-            </span>
-            <h2 className="lable-text">Giá tiền: {total}</h2>
-            <button type="button" onClick={handleAdd}>
+            </div>
+            <div className="giatien">
+              <h2 className="lable-text lable-text-giatien">Giá tiền: </h2>
+              <span className="giatien-total">{total} VNĐ</span>
+            </div>
+            <button className="add-button" type="button" onClick={handleAdd}>
               Thêm
             </button>
           </div>
           <div className="cart-wrapper">
-            <p>Giỏ hàng</p>
-            <table>
+            <h2 className="lable-text lable-text-cart">Giỏ hàng</h2>
+            <table className="table-cart">
               <thead>
                 <tr>
                   <th>Khổ giấy</th>
@@ -104,9 +109,9 @@ const MuaGiayIn = (props) => {
                 {cart.map(({ khogiay, soluonggiay, giatien }, i) => {
                   return (
                     <tr key={i}>
-                      <td>{khogiay}</td>
-                      <td>{soluonggiay}</td>
-                      <td>{giatien}</td>
+                      <td className="in-table">{khogiay}</td>
+                      <td className="in-table">{soluonggiay}</td>
+                      <td className="in-table in-table-price">{giatien}</td>
                     </tr>
                   );
                 })}
@@ -115,7 +120,7 @@ const MuaGiayIn = (props) => {
           </div>
         </div>
 
-        <button type="submit">Xác nhận</button>
+        <button type="submit" className="button-footer">Xác nhận</button>
       </form>
       {openXacNhan && (
         <Popup openPopup={openXacNhan}>
