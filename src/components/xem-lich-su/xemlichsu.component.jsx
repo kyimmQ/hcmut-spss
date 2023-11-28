@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
 import "./xemlichsu.syles.css";
+import LsMuaGiay from "./mua-giay-in/lsmuagiaiyin.component";
 import { ReactComponent as DropdownLogo } from "../../assets/mingcute_down-fill.svg";
 import Popup from "../popup/popup.component";
+import LsIn from "./giao-dich-in/lsgiaodichin.component";
 
 const XemLichSu = () => {
   // state for dropdown
@@ -30,21 +32,33 @@ const XemLichSu = () => {
         </div>
       )}
       {giaoDichIn && (
-        <Popup openPopup={setGiaoDichIn}>
+        <Popup openPopup={setGiaoDichIn} closeBtn={false}>
           <div className="popup-title">
             <h1>Lịch sử giao dịch in</h1>
           </div>
-          <div className="popup-body">Body</div>
-          <div className="popup-footer">Footer</div>
+          <div className="popup-body">
+            <LsIn />
+          </div>
+          <div className="popup-footer">
+            <button type="button" onClick={() => setGiaoDichIn(false)}>
+              Quay lại
+            </button>
+          </div>
         </Popup>
       )}
       {muaGiayIn && (
-        <Popup openPopup={setMuaGiayIn}>
+        <Popup openPopup={setMuaGiayIn} closeBtn={false}>
           <div className="popup-title">
             <h1>Lịch sử mua giấy in</h1>
           </div>
-          <div className="popup-body">Body</div>
-          <div className="popup-footer">Footer</div>
+          <div className="popup-body">
+            <LsMuaGiay />
+          </div>
+          <div className="popup-footer">
+            <button type="button" onClick={() => setMuaGiayIn(false)}>
+              Quay lại
+            </button>
+          </div>
         </Popup>
       )}
     </div>

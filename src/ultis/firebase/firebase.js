@@ -16,6 +16,7 @@ import {
   onSnapshot,
   orderBy,
   addDoc,
+  getDocs,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -97,25 +98,45 @@ export const getUserInfo = (currentUser) => {
   }
 };
 
-export const getBuyHistory = (currentUser) => {
+export const getBuyHistory = async (currentUser) => {
   if (currentUser) {
-    const hisRef = collection(db, `users/${currentUser.uid}/buyHistory`);
-    const queryBuy = query(hisRef, orderBy("date", "desc"));
     let buyHis = [];
-    onSnapshot(queryBuy, (snap) => {
-      snap.forEach((doc) => {
-        const { date, giatien, khogiay, paid } = doc.data();
-        let { soluonggiay } = doc.data();
-        if (khogiay == "A4") soluonggiay = Number(soluonggiay);
-        else if (khogiay == "A3") soluonggiay = Number(soluonggiay) * 2;
-        else soluonggiay = Number(soluonggiay) / 2;
-        buyHis.push({ date, giatien, soluonggiay, paid, ma: doc.id });
-      });
+    const hisRef = await getDocs(
+      collection(db, `users/${currentUser.uid}/buyHistory`)
+    );
+
+    hisRef.forEach((doc) => {
+      const { date, giatien, khogiay, paid } = doc.data();
+      let { soluonggiay } = doc.data();
+      if (khogiay == "A4") soluonggiay = Number(soluonggiay);
+      else if (khogiay == "A3") soluonggiay = Number(soluonggiay) * 2;
+      else soluonggiay = Number(soluonggiay) / 2;
+      buyHis.push({ date, giatien, soluonggiay, paid, ma: doc.id });
     });
+
     return buyHis;
   }
 };
 
 export const updateBuyHistory = async (currentUser, data) => {
   await addDoc(collection(db, `users/${currentUser.uid}/buyHistory`), data);
+};
+
+export const getPrintHistory = async (currentUser) => {
+  if (currentUser) {
+    let printHis = [];
+    const printRef = await getDocs(
+      collection(db, `users/${currentUser.uid}/printHistory`)
+    );
+
+    printRef.forEach((doc) => {
+      const { date, printerCode, name, numPage, printed } = doc.data();
+      printHis.push({ date, printerCode, name, numPage, printed, ma: doc.id });
+    });
+    return printHis;
+  }
+};
+
+export const updatePrintHistory = async (currentUser, data) => {
+  await addDoc(collection(db, `users/${currentUser.uid}/printHistory`), data);
 };

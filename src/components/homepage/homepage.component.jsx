@@ -36,7 +36,7 @@ const Homepage = (props) => {
     <div className="homepage">
       <Navigation />
       <div className="homepage_body">
-        <h1 className="title">HCMUT SSPS</h1>
+        {/* <h1 className="title">HCMUT SSPS</h1> */}
         <h2 className="subtitle">Student Smart Printing Service</h2>
         {!currentUser ? (
           <Button
