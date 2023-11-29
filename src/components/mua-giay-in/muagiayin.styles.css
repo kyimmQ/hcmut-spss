@@ -76,6 +76,22 @@ th {
   margin: 0;
 }
 
+.title-thanhtoan {
+  margin-top: 220px;
+}
+
+.body-thanhtoan {
+  min-height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+}
+
+.footer-thanhtoan {
+  margin-top: 60px;
+}
+
 /* Style table data cells */
 .table-cart {
   width: 100%;

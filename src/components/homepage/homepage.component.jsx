@@ -17,8 +17,10 @@ import {
 
 import "./homepage.styles.css";
 import MuaGiayIn from "../mua-giay-in/muagiayin.component";
+
 import { DocContext } from "../../contexts/doc.context";
 import ThongSoIn from "../thong-so-in/thongsoin.components";
+
 
 // sign in function
 const logGoogleUser = async () => {
@@ -128,6 +130,7 @@ const Homepage = (props) => {
               <ChonMayIn />
             </div>
             <div className="popup-footer">
+             
               <button
                 className="button-footer"
                 onClick={() => {
@@ -147,8 +150,13 @@ const Homepage = (props) => {
               >
                 Quay lại
               </button>
+
             </div>
           </Popup>
+        )}
+
+        {thongSoIn &&(
+          <ThongSoIn openPopup={setThongSoIn} setXacNhanGiaoDich={setXacNhanGiaoDich}/>
         )}
 
         {xacNhanGiaoDich && (
