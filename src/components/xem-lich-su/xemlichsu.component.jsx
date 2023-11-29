@@ -40,7 +40,7 @@ const XemLichSu = () => {
             <LsIn />
           </div>
           <div className="popup-footer">
-            <button type="button" onClick={() => setGiaoDichIn(false)}>
+            <button type="button" className="button-footer" onClick={() => setGiaoDichIn(false)}>
               Quay lại
             </button>
           </div>
@@ -55,7 +55,7 @@ const XemLichSu = () => {
             <LsMuaGiay />
           </div>
           <div className="popup-footer">
-            <button type="button" onClick={() => setMuaGiayIn(false)}>
+            <button type="button" className="button-footer" onClick={() => setMuaGiayIn(false)}>
               Quay lại
             </button>
           </div>
