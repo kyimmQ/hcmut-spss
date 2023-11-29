@@ -7,13 +7,13 @@ import XacNhanGiaoDich from "../xac-nhan-giao-dich/xacnhangiaodich.component";
 
 const ThongSoIn = (props) => {
     // useState var
-    const [xacNhanGiaoDich, setXacNhanGiaoDich] = useState(false);
+    // const [xacNhanGiaoDich, setXacNhanGiaoDich] = useState(false);
     let printProperties ={};
 
     return(
         <Popup openPopup={props.openPopup}>
             <div className="container">
-                <div className="title">Tùy chỉnh thông số in</div>
+                <div className="popup-title"><h1>Tùy chỉnh thông số in</h1></div>
                 <div className="main-page">
                     <div className="preview-container">
                         <div className="preview-title">Xem trước</div>
@@ -74,26 +74,23 @@ const ThongSoIn = (props) => {
                     <label htmlFor="">Lưu tài liệu trong vòng 7 ngày</label>
                     <input type="checkbox" name="" id="" />
                 </div>
-                <div className="btn-container">
-                    <Button className='btn-custome' onClick={()=>setXacNhanGiaoDich(true)}>Xác nhận</Button>
-                    <Button className='btn-custome' onClick={()=>props.openPopup(false)}>Quay lại</Button>
+                <div className="popup-footer">
+                    <Button className='button-footer' onClick={()=>props.setXacNhanGiaoDich(true)}>Xác nhận</Button>
+                    <Button className='button-footer' onClick={()=>props.openPopup(false)}>Quay lại</Button>
                 </div>
-
+                {/* 
                 {xacNhanGiaoDich &&(
                     <Popup>
                         <XacNhanGiaoDich />
                     </Popup>
                     )
-                };
+                }; */}
 
             </div>
             
         </Popup>
 
         
-            
-        
-
     );
 
 
