@@ -123,7 +123,8 @@ export const getPrintHistory = async (currentUser) => {
   if (currentUser) {
     let printHis = [];
     const printRef = await getDocs(
-      collection(db, `users/${currentUser.uid}/printHistory`)
+      collection(db, `users/${currentUser.uid}/printHistory`),
+      orderBy("date", "desc")
     );
 
     printRef.forEach((doc) => {
@@ -136,4 +137,5 @@ export const getPrintHistory = async (currentUser) => {
 
 export const updatePrintHistory = async (currentUser, data) => {
   await addDoc(collection(db, `users/${currentUser.uid}/printHistory`), data);
+  // console.log(data);
 };

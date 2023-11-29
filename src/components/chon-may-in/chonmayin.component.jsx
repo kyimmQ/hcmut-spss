@@ -40,7 +40,7 @@ const ChonMayIn = () => {
   const handleRadioChange2 = (event) => {
     setSelectedValue2(event.target.value);
   };
-
+  console.log(doc);
   return (
     <div>
       <h2 className="printer-location">Cơ sở 1: Lý Thường Kiệt, P.14, Q.10</h2>
@@ -99,7 +99,7 @@ const ChonMayIn = () => {
               <td className="printer-item-content">
                 <input
                   type="radio"
-                  checked={selectedValue2 === record.code}
+                  checked={selectedValue2 === record.code && record.status}
                   value={record.code}
                   onClick={handleRadioChange2}
                 />{" "}
