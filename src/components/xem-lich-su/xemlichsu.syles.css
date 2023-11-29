@@ -1,13 +1,13 @@
 .dropdown .dropdown-title-wrapper {
   width: 200px;
-  height: 100px;
+  height: 12vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .dropdown-title {
-  color: #1488DB;
+  color: #1488db;
   font-size: 25px;
   font-family: Source Serif Pro;
   font-weight: 600;
@@ -33,7 +33,7 @@
   width: 200px;
   padding: 10px 10px;
   background-color: white;
-  color: #1488DB;
+  color: #1488db;
   font-size: 25px;
   font-family: Source Serif Pro;
   font-weight: 600;
@@ -49,5 +49,5 @@
 }
 .dropdown-item:hover {
   background-color: rgb(217, 217, 217);
-  color: #0067B0;
+  color: #0067b0;
 }
