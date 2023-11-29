@@ -22,7 +22,7 @@ const ThongSoIn = (props) => {
                     <div className="adjust-container">
                         <div className="adjust-row">
                             <label htmlFor="">Số bản:</label>
-                            <input type="number" name="" id="" />
+                            <input type="number" name="" id="" value={1} />
                         </div>
                         <div className="adjust-row size-select">
                             <label htmlFor="">Kích thước:</label>
@@ -33,13 +33,13 @@ const ThongSoIn = (props) => {
                         </div>
                         <div className="adjust-row">
                             <label htmlFor="">In từ trang:  </label>
-                            <select name="" id=""></select>
+                            <input type="number" name="fromPage" id="" />
                             <span> đến </span>
-                            <select name="" id=""></select>
+                            <input type="number" name="toPage" id="" />
                         </div>
                         <div className="adjust-row print-direction">
                             <label htmlFor="">Hướng in:</label>
-                            <input type="radio" name="direction" id="" value="vertical"/>
+                            <input type="radio" name="direction" id="" value="vertical" checked/>
                             <span>Dọc</span>
                             <input type="radio" name="direction" id="" value="horizontal"/>
                             <span>Ngang</span>
@@ -49,15 +49,15 @@ const ThongSoIn = (props) => {
                             <div>
                                 <div>
                                     <span>Trái:</span>
-                                    <select name="" id=""></select>
+                                    <input type="number" name="left" id="" value={1}/>
                                     <span>Phải:</span>
-                                    <select name="" id=""></select>
+                                    <input type="number" name="right" id="" value={1}/>
                                 </div>
                                 <div>
                                     <span>Trên:</span>
-                                    <select name="" id=""></select>
+                                    <input type="number" name="top" id="" value={1}/>
                                     <span>Dưới:</span>
-                                    <select name="" id=""></select>
+                                    <input type="number" name="bottom" id="" value={1}/>
                                 </div>
                                 
                              
@@ -66,7 +66,7 @@ const ThongSoIn = (props) => {
                         </div>
                         <div className="adjust-row">
                             <label htmlFor="">Số trang/1 mặt:</label>
-                            <input type="number" name="" id="" />
+                            <input type="number" name="" id="" value={1}/>
                         </div>
                     </div>
                 </div>
