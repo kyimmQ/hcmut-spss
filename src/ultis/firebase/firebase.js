@@ -69,17 +69,14 @@ export const onAuthStateChangedListener = (callback) => {
 };
 export const signOutUser = async () => await signOut(auth);
 
-export const getPrinters = (coso) => {
-  const printersRef = collection(
-    db,
-    `printers/location${coso}/printersAtLocation${coso}`
+export const getPrinters = async (coso) => {
+  const printersRef = await getDocs(
+    collection(db, `printers/location${coso}/printersAtLocation${coso}`)
   );
-  const queryPrinters = query(printersRef);
+
   let printersList = [];
-  onSnapshot(queryPrinters, (snapshot) => {
-    snapshot.forEach((doc) => {
-      printersList.push({ ...doc.data() });
-    });
+  printersRef.forEach((doc) => {
+    printersList.push({ ...doc.data() });
   });
   return printersList;
 };

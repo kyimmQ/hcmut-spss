@@ -17,16 +17,20 @@ import {
 
 import "./homepage.styles.css";
 import MuaGiayIn from "../mua-giay-in/muagiayin.component";
+
+import { DocContext } from "../../contexts/doc.context";
 import ThongSoIn from "../thong-so-in/thongsoin.components";
+
 
 // sign in function
 const logGoogleUser = async () => {
   const { user } = await signInWithGooglePopup();
-  createUserFromAuth(user, { numOfPaper: 500 });
+  createUserFromAuth(user, { numOfPaper: 500, role: "user" });
 };
 
 const Homepage = (props) => {
   // states for popup
+
   const [inTaiLieu, setInTaiLieu] = useState(false);
   const [muaGiayIn, setMuaGiayIn] = useState(false);
   const [chonMayIn, setChonMayIn] = useState(false);
@@ -34,6 +38,7 @@ const Homepage = (props) => {
   const [xacNhanGiaoDich, setXacNhanGiaoDich] = useState(false);
   // user context for different ui
   const { currentUser } = useContext(UserContext);
+  const { doc, setDoc } = useContext(DocContext);
 
   return (
     <div className="homepage">
@@ -71,17 +76,35 @@ const Homepage = (props) => {
           </div>
         )}
 
-        {/* chưa hoàn thành */}
         {inTaiLieu && (
           <Popup openPopup={setInTaiLieu}>
             <div className="popup-title">
               <h1>Tải tài liệu lên</h1>
             </div>
-            <div className="popup-body"><Upload/></div>
-            <div className="popup-footer"> 
-            <button className="button-footer" onClick={() => setChonMayIn(true)}>Xác nhận</button>
-              <button className="button-footer" onClick={() => setInTaiLieu(false)}>Hủy</button>
-              </div>
+            <div className="popup-body">
+              <Upload />
+            </div>
+            <div className="popup-footer">
+              <button
+                className="button-footer"
+                onClick={() => setChonMayIn(true)}
+              >
+                Xác nhận
+              </button>
+              <button
+                className="button-footer"
+                onClick={() => {
+                  setInTaiLieu(false);
+                  setDoc({
+                    list: [],
+                    date: null,
+                    printer: "",
+                  });
+                }}
+              >
+                Hủy
+              </button>
+            </div>
           </Popup>
         )}
         {muaGiayIn && (
@@ -107,8 +130,27 @@ const Homepage = (props) => {
               <ChonMayIn />
             </div>
             <div className="popup-footer">
-              <button className="button-footer" onClick={()=> setThongSoIn(true)}>Xác nhận</button>
-              <button className="button-footer">Quay lại</button>
+             
+              <button
+                className="button-footer"
+                onClick={() => {
+                  setThongSoIn(true);
+                }}
+              >
+                Xác nhận
+              </button>
+              <button
+                className="button-footer"
+                onClick={() => {
+                  setChonMayIn(!chonMayIn);
+                  const newDoc = { ...doc };
+                  newDoc.printer = "";
+                  setDoc(newDoc);
+                }}
+              >
+                Quay lại
+              </button>
+
             </div>
           </Popup>
         )}
@@ -131,6 +173,8 @@ const Homepage = (props) => {
             </div>
           </Popup>
         )}
+
+        {thongSoIn && <ThongSoIn />}
       </div>
       <Footer />
     </div>
