@@ -3,17 +3,17 @@ import React, {useState} from "react";
 import './thongsoin.styles.css'
 import Popup from "../popup/popup.component";
 import Button from "../button/button.component";
-
+import XacNhanGiaoDich from "../xac-nhan-giao-dich/xacnhangiaodich.component";
 
 const ThongSoIn = (props) => {
     // useState var
-    const [xacNhanGiaoDich, setXacNhanGiaoDich] = useState(false);
+    // const [xacNhanGiaoDich, setXacNhanGiaoDich] = useState(false);
     let printProperties ={};
 
     return(
         <Popup openPopup={props.openPopup}>
             <div className="container">
-                <div className="title">Tùy chỉnh thông số in</div>
+                <div className="popup-title"><h1>Tùy chỉnh thông số in</h1></div>
                 <div className="main-page">
                     <div className="preview-container">
                         <div className="preview-title">Xem trước</div>
@@ -22,7 +22,7 @@ const ThongSoIn = (props) => {
                     <div className="adjust-container">
                         <div className="adjust-row">
                             <label htmlFor="">Số bản:</label>
-                            <input type="number" name="" id="" />
+                            <input type="number" name="" id="" value={1} />
                         </div>
                         <div className="adjust-row size-select">
                             <label htmlFor="">Kích thước:</label>
@@ -33,13 +33,13 @@ const ThongSoIn = (props) => {
                         </div>
                         <div className="adjust-row">
                             <label htmlFor="">In từ trang:  </label>
-                            <select name="" id=""></select>
+                            <input type="number" name="fromPage" id="" />
                             <span> đến </span>
-                            <select name="" id=""></select>
+                            <input type="number" name="toPage" id="" />
                         </div>
                         <div className="adjust-row print-direction">
                             <label htmlFor="">Hướng in:</label>
-                            <input type="radio" name="direction" id="" value="vertical"/>
+                            <input type="radio" name="direction" id="" value="vertical" checked/>
                             <span>Dọc</span>
                             <input type="radio" name="direction" id="" value="horizontal"/>
                             <span>Ngang</span>
@@ -49,15 +49,15 @@ const ThongSoIn = (props) => {
                             <div>
                                 <div>
                                     <span>Trái:</span>
-                                    <select name="" id=""></select>
+                                    <input type="number" name="left" id="" value={1}/>
                                     <span>Phải:</span>
-                                    <select name="" id=""></select>
+                                    <input type="number" name="right" id="" value={1}/>
                                 </div>
                                 <div>
                                     <span>Trên:</span>
-                                    <select name="" id=""></select>
+                                    <input type="number" name="top" id="" value={1}/>
                                     <span>Dưới:</span>
-                                    <select name="" id=""></select>
+                                    <input type="number" name="bottom" id="" value={1}/>
                                 </div>
                                 
                              
@@ -66,7 +66,7 @@ const ThongSoIn = (props) => {
                         </div>
                         <div className="adjust-row">
                             <label htmlFor="">Số trang/1 mặt:</label>
-                            <input type="number" name="" id="" />
+                            <input type="number" name="" id="" value={1}/>
                         </div>
                     </div>
                 </div>
@@ -74,26 +74,23 @@ const ThongSoIn = (props) => {
                     <label htmlFor="">Lưu tài liệu trong vòng 7 ngày</label>
                     <input type="checkbox" name="" id="" />
                 </div>
-                <div className="btn-container">
-                    <Button className='btn-custome' onClick={()=>setXacNhanGiaoDich(true)}>Xác nhận</Button>
-                    <Button className='btn-custome' >Quay lại</Button>
+                <div className="popup-footer">
+                    <Button className='button-footer' onClick={()=>props.setXacNhanGiaoDich(true)}>Xác nhận</Button>
+                    <Button className='button-footer' onClick={()=>props.openPopup(false)}>Quay lại</Button>
                 </div>
-
+                {/* 
                 {xacNhanGiaoDich &&(
                     <Popup>
-                        <h1>Hello</h1>
+                        <XacNhanGiaoDich />
                     </Popup>
                     )
-                };
+                }; */}
 
             </div>
             
         </Popup>
 
         
-            
-        
-
     );
 
 

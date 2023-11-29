@@ -69,30 +69,27 @@ export const onAuthStateChangedListener = (callback) => {
 };
 export const signOutUser = async () => await signOut(auth);
 
-export const getPrinters = (coso) => {
-  const printersRef = collection(
-    db,
-    `printers/location${coso}/printersAtLocation${coso}`
+export const getPrinters = async (coso) => {
+  const printersRef = await getDocs(
+    collection(db, `printers/location${coso}/printersAtLocation${coso}`)
   );
-  const queryPrinters = query(printersRef);
+
   let printersList = [];
-  onSnapshot(queryPrinters, (snapshot) => {
-    snapshot.forEach((doc) => {
-      printersList.push({ ...doc.data() });
-    });
+  printersRef.forEach((doc) => {
+    printersList.push({ ...doc.data() });
   });
   return printersList;
 };
 
-export const getUserInfo = (currentUser) => {
+export const getUserInfo = async (currentUser) => {
   if (currentUser) {
-    const usersRef = collection(db, "users");
-    const queryUsers = query(usersRef, orderBy("date"));
-    onSnapshot(queryUsers, (snapshot) => {
-      snapshot.forEach((doc) => {
-        if (doc.id == currentUser.uid) return { ...doc.data() };
-      });
+    let userInfo = {};
+    const usersRef = await getDocs(collection(db, `users`));
+    usersRef.forEach((doc) => {
+      console.log(doc.id == currentUser.uid);
+      if (doc.id == currentUser.uid) userInfo = { ...doc.data() };
     });
+    return userInfo;
   } else {
     console.log("No user logged in");
   }
@@ -126,7 +123,8 @@ export const getPrintHistory = async (currentUser) => {
   if (currentUser) {
     let printHis = [];
     const printRef = await getDocs(
-      collection(db, `users/${currentUser.uid}/printHistory`)
+      collection(db, `users/${currentUser.uid}/printHistory`),
+      orderBy("date", "desc")
     );
 
     printRef.forEach((doc) => {
@@ -139,4 +137,5 @@ export const getPrintHistory = async (currentUser) => {
 
 export const updatePrintHistory = async (currentUser, data) => {
   await addDoc(collection(db, `users/${currentUser.uid}/printHistory`), data);
+  // console.log(data);
 };

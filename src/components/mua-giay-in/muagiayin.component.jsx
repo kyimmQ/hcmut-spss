@@ -10,6 +10,7 @@ const defaultFormFields = {
 };
 
 const MuaGiayIn = (props) => {
+  const { setMuaGiayIn } = props;
   const { currentUser } = useContext(UserContext);
   const [openXacNhan, setOpenXacNhan] = useState(false);
   const [cart, setCart] = useState([]);
@@ -120,7 +121,16 @@ const MuaGiayIn = (props) => {
           </div>
         </div>
 
-        <button type="submit" className="button-footer">Xác nhận</button>
+        <button type="submit" className="button-footer">
+          Xác nhận
+        </button>
+        <button
+          type="button"
+          className="button-footer"
+          onClick={() => setMuaGiayIn(false)}
+        >
+          Quay lại
+        </button>
       </form>
       {openXacNhan && (
         <Popup openPopup={openXacNhan}>
@@ -133,7 +143,14 @@ const MuaGiayIn = (props) => {
           </div>
 
           <div className="popup-footer footer-thanhtoan">
-            <button type="button" className="button-footer" onClick={() => setOpenXacNhan(false)}>
+            <button
+              type="button"
+              className="button-footer"
+              onClick={() => {
+                setOpenXacNhan(false);
+                setMuaGiayIn(false);
+              }}
+            >
               Quay lại
             </button>
           </div>

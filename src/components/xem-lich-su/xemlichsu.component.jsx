@@ -6,7 +6,7 @@ import { ReactComponent as DropdownLogo } from "../../assets/mingcute_down-fill.
 import Popup from "../popup/popup.component";
 import LsIn from "./giao-dich-in/lsgiaodichin.component";
 
-const XemLichSu = () => {
+const XemLichSuUser = () => {
   // state for dropdown
   const [xemLichSu, setXemLichSu] = useState(false);
   // states for popup
@@ -65,4 +65,4 @@ const XemLichSu = () => {
   );
 };
 
-export default XemLichSu;
+export default XemLichSuUser;
