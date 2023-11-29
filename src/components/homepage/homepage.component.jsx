@@ -13,6 +13,7 @@ import {
   createUserFromAuth,
   db,
   getPrinters,
+  updatePrintHistory,
 } from "../../ultis/firebase/firebase";
 
 import "./homepage.styles.css";
@@ -20,7 +21,6 @@ import MuaGiayIn from "../mua-giay-in/muagiayin.component";
 
 import { DocContext } from "../../contexts/doc.context";
 import ThongSoIn from "../thong-so-in/thongsoin.components";
-
 
 // sign in function
 const logGoogleUser = async () => {
@@ -130,7 +130,6 @@ const Homepage = (props) => {
               <ChonMayIn />
             </div>
             <div className="popup-footer">
-             
               <button
                 className="button-footer"
                 onClick={() => {
@@ -150,13 +149,15 @@ const Homepage = (props) => {
               >
                 Quay lại
               </button>
-
             </div>
           </Popup>
         )}
 
-        {thongSoIn &&(
-          <ThongSoIn openPopup={setThongSoIn} setXacNhanGiaoDich={setXacNhanGiaoDich}/>
+        {thongSoIn && (
+          <ThongSoIn
+            openPopup={setThongSoIn}
+            setXacNhanGiaoDich={setXacNhanGiaoDich}
+          />
         )}
 
         {xacNhanGiaoDich && (
@@ -168,13 +169,35 @@ const Homepage = (props) => {
               <XacNhanGiaoDich />
             </div>
             <div className="popup-footer">
-              <button className="button-footer">Xác nhận</button>
-              <button className="button-footer">Quay lại</button>
+              <button
+                className="button-footer"
+                onClick={() => {
+                  setXacNhanGiaoDich(false);
+                  setChonMayIn(false);
+                  setThongSoIn(false);
+                  setInTaiLieu(false);
+                  doc.list.forEach((element) => {
+                    updatePrintHistory(currentUser, {
+                      date: doc.date,
+                      printerCode: doc.printer,
+                      name: element.file_name,
+                      numPage: element.soTrang,
+                      printed: false,
+                    });
+                  });
+                }}
+              >
+                Xác nhận
+              </button>
+              <button
+                className="button-footer"
+                onClick={() => setXacNhanGiaoDich(false)}
+              >
+                Quay lại
+              </button>
             </div>
           </Popup>
         )}
-
-        {thongSoIn && <ThongSoIn />}
       </div>
       <Footer />
     </div>

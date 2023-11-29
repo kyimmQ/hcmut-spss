@@ -81,15 +81,17 @@ const File_item = ({
   };
   useEffect(() => {
     if (isChecked) {
+      const soTrang = Math.floor(Math.random() * 40 + 60);
       const newDoc = { ...doc };
-      newDoc.list.push(file_name);
+      newDoc.list.push({ file_name, soTrang });
       setDoc(newDoc);
       console.log(doc);
     } else {
       const newDoc = { ...doc };
-      newDoc.list.pop(file_name);
+      const newList = doc.list.filter((file) => file.file_name != file_name);
+      newDoc.list = newList;
+      console.log(newDoc);
       setDoc(newDoc);
-      console.log(doc);
     }
   }, [isChecked]);
   useEffect(() => {
