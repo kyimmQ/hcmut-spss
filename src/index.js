@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./contexts/user.context";
 import { DocProvider } from "./contexts/doc.context";
+import { RoleProvider } from "./contexts/role.context";
 import App from "./App";
 import "./index.css";
 
@@ -12,7 +13,9 @@ root.render(
   <BrowserRouter>
     <DocProvider>
       <UserProvider>
-        <App />
+        <RoleProvider>
+          <App />
+        </RoleProvider>
       </UserProvider>
     </DocProvider>
   </BrowserRouter>
