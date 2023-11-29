@@ -17,6 +17,7 @@ import {
 
 import "./homepage.styles.css";
 import MuaGiayIn from "../mua-giay-in/muagiayin.component";
+import ThongSoIn from "../thong-so-in/thongsoin.components";
 
 // sign in function
 const logGoogleUser = async () => {
@@ -29,6 +30,7 @@ const Homepage = (props) => {
   const [inTaiLieu, setInTaiLieu] = useState(false);
   const [muaGiayIn, setMuaGiayIn] = useState(false);
   const [chonMayIn, setChonMayIn] = useState(false);
+  const [thongSoIn, setThongSoIn] = useState(false);
   const [xacNhanGiaoDich, setXacNhanGiaoDich] = useState(false);
   // user context for different ui
   const { currentUser } = useContext(UserContext);
@@ -105,10 +107,14 @@ const Homepage = (props) => {
               <ChonMayIn />
             </div>
             <div className="popup-footer">
-              <button className="button-footer">Xác nhận</button>
+              <button className="button-footer" onClick={()=> setThongSoIn(true)}>Xác nhận</button>
               <button className="button-footer">Quay lại</button>
             </div>
           </Popup>
+        )}
+
+        {thongSoIn &&(
+          <ThongSoIn openPopup={setThongSoIn} setXacNhanGiaoDich={setXacNhanGiaoDich}/>
         )}
 
         {xacNhanGiaoDich && (
