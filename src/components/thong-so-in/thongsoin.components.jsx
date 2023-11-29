@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import './thongsoin.styles.css'
 import Popup from "../popup/popup.component";
 import Button from "../button/button.component";
-
+import XacNhanGiaoDich from "../xac-nhan-giao-dich/xacnhangiaodich.component";
 
 const ThongSoIn = (props) => {
     // useState var
@@ -76,12 +76,12 @@ const ThongSoIn = (props) => {
                 </div>
                 <div className="btn-container">
                     <Button className='btn-custome' onClick={()=>setXacNhanGiaoDich(true)}>Xác nhận</Button>
-                    <Button className='btn-custome' >Quay lại</Button>
+                    <Button className='btn-custome' onClick={()=>props.openPopup(false)}>Quay lại</Button>
                 </div>
 
                 {xacNhanGiaoDich &&(
                     <Popup>
-                        <h1>Hello</h1>
+                        <XacNhanGiaoDich />
                     </Popup>
                     )
                 };
