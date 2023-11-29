@@ -81,15 +81,15 @@ export const getPrinters = async (coso) => {
   return printersList;
 };
 
-export const getUserInfo = (currentUser) => {
+export const getUserInfo = async (currentUser) => {
   if (currentUser) {
-    const usersRef = collection(db, "users");
-    const queryUsers = query(usersRef, orderBy("date"));
-    onSnapshot(queryUsers, (snapshot) => {
-      snapshot.forEach((doc) => {
-        if (doc.id == currentUser.uid) return { ...doc.data() };
-      });
+    let userInfo = {};
+    const usersRef = await getDocs(collection(db, `users`));
+    usersRef.forEach((doc) => {
+      console.log(doc.id == currentUser.uid);
+      if (doc.id == currentUser.uid) userInfo = { ...doc.data() };
     });
+    return userInfo;
   } else {
     console.log("No user logged in");
   }

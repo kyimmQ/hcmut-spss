@@ -1,18 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import XemLichSuUser from "../xem-lich-su/xemlichsu.component";
 import { UserContext } from "../../contexts/user.context";
 
-import { signOutUser } from "../../ultis/firebase/firebase";
+import { getUserInfo, signOutUser } from "../../ultis/firebase/firebase";
 
 import { Link } from "react-router-dom";
 
 import logo from "../../assets/spss_logo.svg";
 
 import "./navigation.styles.css";
+import XemLichSuNvia from "../xem-lich-su-nvia/xemlichsunvia.component";
+import { RoleContext } from "../../contexts/role.context";
 
 const Navigation = (props) => {
   const { currentUser } = useContext(UserContext);
+
+  const { role } = useContext(RoleContext);
+  console.log(role);
   return (
     <div className="navigation">
       <div className="logo-container">
@@ -31,7 +36,7 @@ const Navigation = (props) => {
         </div>
       ) : (
         <div className="link-container">
-          <XemLichSuUser />
+          {role == "user" ? <XemLichSuUser /> : <XemLichSuNvia />}
           <button
             type="button"
             onClick={signOutUser}
