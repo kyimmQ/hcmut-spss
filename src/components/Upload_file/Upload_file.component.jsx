@@ -1,70 +1,151 @@
-import React from 'react'
-import './Upload_file.style.css'
-const Upload  = () => {
-    return(
-        <div className="upload-page-body">
-            <br></br>
-            <Upload_file/>
-        
-            
-            <div className='text-title'>
-            Tài liệu đang được xử lý
-            </div>
-            <File_item file_name='Software Engineering.pdf' status='Completed' file_type= 'pdf'/>
-            <File_item  file_name='DB' status='Uncompleted' file_type= 'word'/>
-            <File_item  file_name='CN' status='Canceled' file_type= 'ppt'/>
-            
-            
-        </div>
+import React, { useContext, useEffect, useState } from "react";
+import { DocContext } from "../../contexts/doc.context";
+import "./Upload_file.style.css";
+const Upload = () => {
+  const [completedFiles, setCompletedFiles] = useState([]);
+  const [files, setFiles] = useState([]);
 
-    )
-}
+  return (
+    <div className="upload-page-body">
+      <br></br>
+      <Upload_file setFiles={setFiles} />
+      <div className="text-title">Tài liệu đang được xử lý</div>
+      {completedFiles.map((file) => {
+        return (
+          <File_item
+            file_name={file}
+            done={true}
+            file_type="pdf"
+            setFiles={setFiles}
+            setCompletedFiles={setCompletedFiles}
+          />
+        );
+      })}
+      {files.map((file) => {
+        return (
+          <File_item
+            file_name={file.name}
+            done={false}
+            file_type="pdf"
+            setFiles={setFiles}
+            setCompletedFiles={setCompletedFiles}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
-export default Upload
+export default Upload;
 
-const Upload_file  = () => {
-    return(
-        <div className='upload-file'> 
-            <img src="./image/icon/icon_upload.png" alt="Tải lên" width='40' height='45'/>
-            <div className='upload-text'>Kéo thả file tại đây</div>
-            <div className='upload-text'>-OR-</div>
-            
-            <form action='' encType="multipart/form-data" method='post'> <label className='upload-file-button'> 
-            <input type='file' multiple="multiple" accept='.doc,.ppt,.pdf' onClick="this.form.submit()" /> Tải lên file
-            </label> 
-            </form> 
-            <br/>
-            
-        </div>
-    )
-}
-const File_item=(
-    {
-        file_name='',
-        status='',
-        file_type=''
+const Upload_file = ({ setFiles }) => {
+  const handleUpload = (e) => {
+    const { name, size, type } = e.target.files[0];
+    setFiles((prevFiles) => [...prevFiles, { name, size, type }]);
+  };
+  return (
+    <div className="upload-file">
+      <img
+        src="./image/icon/icon_upload.png"
+        alt="Tải lên"
+        width="40"
+        height="45"
+      />
+      <div className="upload-text">Kéo thả file tại đây</div>
+      <div className="upload-text">-OR-</div>
+
+      <form action="" encType="multipart/form-data" method="post">
+        {" "}
+        <label className="upload-file-button">
+          <input type="file" accept=".doc,.ppt,.pdf" onChange={handleUpload} />{" "}
+          Tải lên file
+        </label>
+      </form>
+      <br />
+    </div>
+  );
+};
+const File_item = ({
+  file_name = "",
+  done = true,
+  file_type = "",
+  setFiles,
+  setCompletedFiles,
+}) => {
+  const { doc, setDoc } = useContext(DocContext);
+  const [progress, setProgress] = useState(0);
+  const [status, setStatus] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const handleCheckboxChange = (e) => {
+    setIsChecked(!isChecked);
+  };
+  useEffect(() => {
+    if (isChecked) {
+      const newDoc = { ...doc };
+      newDoc.list.push(file_name);
+      setDoc(newDoc);
+      console.log(doc);
+    } else {
+      const newDoc = { ...doc };
+      newDoc.list.pop(file_name);
+      setDoc(newDoc);
+      console.log(doc);
     }
-)=>{
-    return(
-        <div className='select-file-line'> 
-            <div className={'file-box-'+status}>  
-                <img src={"./image/icon/icon_file_"+file_type+".png"} alt="PDF" width='30' height='35'/>
-                <div className='file-info-box'> 
-                    <div className='file-info'>
-                        <div className='file-name'> {file_name} </div>
-                        <div className='file-state'> {status}</div>
-                    </div>
-                    <div className='frame'> <div className={status+'-frame'}> </div></div>
-                </div>
+  }, [isChecked]);
+  useEffect(() => {
+    if (!done) {
+      const timer = setTimeout(() => {
+        if (progress < 100) setProgress(progress + 20);
+      }, 1000);
+      if (progress == 100) {
+        setStatus("completed");
+        setFiles((prevFiles) => {
+          prevFiles.pop(file_name);
+          return prevFiles;
+        });
+        setCompletedFiles((prevFiles) => [...prevFiles, file_name]);
+      }
+      // Clear the timer to avoid memory leaks
+      return () => clearTimeout(timer);
+    } else {
+      setProgress(100);
+      setStatus("completed");
+    }
+  }, [progress]);
+  return (
+    <div className="select-file-line">
+      <div className={`file-box ${status}`}>
+        <img
+          src={"./image/icon/icon_file_" + file_type + ".png"}
+          alt="PDF"
+          width="30"
+          height="35"
+        />
+        <div className="file-info-box">
+          <div className="file-info">
+            <div className="file-name"> {file_name} </div>
+            <div className="file-state">
+              {" "}
+              {status ? "Completed" : "Uploading"}
             </div>
-            <div className='select-box'> 
-            <div> Chọn tài liệu</div> 
-            <div> <input type='radio' name='file' value={file_name}/> </div>
-            
-            </div>
+          </div>
 
+          <progress value={progress} max="100"></progress>
         </div>
-       
-
-    )
-}
+      </div>
+      <div className="select-box">
+        <div> Chọn tài liệu</div>
+        <div>
+          {" "}
+          <input
+            type="checkbox"
+            name="file"
+            value={file_name}
+            checked={isChecked}
+            onChange={handleCheckboxChange}
+          />{" "}
+        </div>
+      </div>
+    </div>
+  );
+};

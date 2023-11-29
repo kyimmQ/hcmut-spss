@@ -23,7 +23,9 @@
   max-height: 58vh;
   height: fit-content;
 }
-.khogiay, .soluonggiay, .giatien {
+.khogiay,
+.soluonggiay,
+.giatien {
   display: flex;
   color: #1488db;
   margin-bottom: 60px;
@@ -39,7 +41,8 @@
   margin-right: 170px;
 }
 
-.table-soluong, .table-khogiay {
+.table-soluong,
+.table-khogiay {
   width: 70px;
   height: 32px;
   border-radius: 20px;
@@ -119,4 +122,20 @@ th {
 .add-button:hover {
   cursor: pointer;
   background-color: rgba(16, 110, 193, 0.5);
+}
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
 }
