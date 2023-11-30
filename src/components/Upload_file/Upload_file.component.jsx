@@ -9,7 +9,7 @@ const Upload = () => {
     <div className="upload-page-body">
       <br></br>
       <Upload_file setFiles={setFiles} />
-      <div className="text-title">Tài liệu đang được xử lý</div>
+      <h2 className="text-title">Tài liệu đang được xử lý</h2>
       {completedFiles.map((file) => {
         return (
           <File_item
@@ -50,6 +50,7 @@ const Upload_file = ({ setFiles }) => {
         alt="Tải lên"
         width="40"
         height="45"
+        className="upload-img"
       />
       <div className="upload-text">Kéo thả file tại đây</div>
       <div className="upload-text">-OR-</div>
@@ -58,7 +59,7 @@ const Upload_file = ({ setFiles }) => {
         {" "}
         <label className="upload-file-button">
           <input type="file" accept=".doc,.ppt,.pdf" onChange={handleUpload} />{" "}
-          Tải lên file
+            Tải lên file
         </label>
       </form>
       <br />
@@ -118,10 +119,9 @@ const File_item = ({
     <div className="select-file-line">
       <div className={`file-box ${status}`}>
         <img
-          src={"./image/icon/icon_file_" + file_type + ".png"}
+          src={"./image/icon/icon_file_" + file_type + ".svg"}
           alt="PDF"
-          width="30"
-          height="35"
+          className="icon-file"
         />
         <div className="file-info-box">
           <div className="file-info">
@@ -136,10 +136,11 @@ const File_item = ({
         </div>
       </div>
       <div className="select-box">
-        <div> Chọn tài liệu</div>
+        <div className="select-title"> Chọn tài liệu</div>
         <div>
           {" "}
           <input
+            className="select-input"
             type="checkbox"
             name="file"
             value={file_name}

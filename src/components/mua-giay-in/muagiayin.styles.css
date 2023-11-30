@@ -96,28 +96,30 @@ th {
 .table-cart {
   width: 100%;
   margin: 20px 0;
-  border-collapse: collapse;
+  
   border: 1px solid #cacaca;
   border-radius: 10px;
 }
 
 td {
-  border: 1px solid gray;
-  padding: 10px;
+  border-top: 1px solid gray;
+  padding: 5px;
 }
 
 thead {
   color: #1488db;
-  font-size: 20px;
 }
 
 th {
-  padding: 12px 25px;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 20px;
+  border: none;
 }
 
 .in-table {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .in-table-price {
@@ -139,6 +141,7 @@ th {
   cursor: pointer;
   background-color: rgba(16, 110, 193, 0.5);
 }
+
 table,
 caption,
 tbody,
@@ -147,11 +150,7 @@ thead,
 tr,
 th,
 td {
-  margin: 0;
-  padding: 0;
-  border: 0;
   outline: 0;
-  font-size: 100%;
   vertical-align: baseline;
   background: transparent;
 }

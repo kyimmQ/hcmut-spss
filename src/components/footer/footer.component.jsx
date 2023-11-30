@@ -3,6 +3,7 @@ import logo from '../../assets/spss_logo.svg';
 import address from '../../assets/address.svg';
 import tel from '../../assets/tel.svg';
 import mail from '../../assets/mail.svg';
+import { Link } from "react-router-dom";
 
 import "./footer.styles.css";
 
@@ -11,7 +12,9 @@ const Footer = (props) => {
     <div className="footer">
       <div className="logo-container">
         <div className="LogoSPSS">
-          <img src={logo} alt="LogoSPSS" className="LogoSPSS" />
+          <Link to="/">
+            <img src={logo} alt="LogoSPSS" className="LogoSPSS" />
+          </Link>
         </div>
         <div className="LogoHCMUT">
           <img src="/HCMUT_logo.png" alt="LogoHCMUT" className="LogoHCMUT" />
