@@ -78,14 +78,7 @@ const ThongSoIn = (props) => {
                     <Button className='button-footer' onClick={()=>props.setXacNhanGiaoDich(true)}>Xác nhận</Button>
                     <Button className='button-footer' onClick={()=>props.openPopup(false)}>Quay lại</Button>
                 </div>
-                {/* 
-                {xacNhanGiaoDich &&(
-                    <Popup>
-                        <XacNhanGiaoDich />
-                    </Popup>
-                    )
-                }; */}
-
+                
             </div>
             
         </Popup>
