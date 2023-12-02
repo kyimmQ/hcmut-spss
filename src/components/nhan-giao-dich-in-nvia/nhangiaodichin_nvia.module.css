@@ -112,18 +112,7 @@
 }
 
 
-.name{
-    color: #1488DB;
-    font-style: normal;
-    font-weight: 500;
-}
 
-.nameTag{
-    color: #1488DB;
-    font-size: 14px;
-    font-style: italic;
-    font-weight: 400;
-}
 
 .tableContainer tbody tr > :first-child{
     border-left: none;
