@@ -1,0 +1,12 @@
+.accountName{
+    color: #1488DB;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.accountNameTag{
+    color: #1488DB;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+}

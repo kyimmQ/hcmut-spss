@@ -6,6 +6,7 @@ import Button from "../button/button.component";
 import XacNhanGiaoDich from "../xac-nhan-giao-dich/xacnhangiaodich.component";
 import ChonMayIn from "../chon-may-in/chonmayin.component";
 import Upload from "../Upload_file/Upload_file.component";
+import NhanGiaoDichIn from "../nhan-giao-dich-in-nvia/nhangiaodichin_nvia.component";
 import { UserContext } from "../../contexts/user.context";
 
 import {
@@ -107,22 +108,7 @@ const Homepage = (props) => {
         )}
         {/* nvia */}
         {nhanGiaoDich && (
-          <Popup openPopup={setNhanGiaoDich} closeBtn={false}>
-            <div className="popup-title">
-              <h1>Nhận giao dịch</h1>
-            </div>
-            <div className="popup-body">Body</div>
-            <div className="popup-footer">
-              <button
-                type="button"
-                onClick={() => {
-                  setNhanGiaoDich(false);
-                }}
-              >
-                Quay lại
-              </button>
-            </div>
-          </Popup>
+          <NhanGiaoDichIn openPopup={setNhanGiaoDich}/>
         )}
         {thongTinMayIn && (
           <Popup openPopup={setThongTinMayIn} closeBtn={false}>
