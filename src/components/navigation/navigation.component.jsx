@@ -17,7 +17,7 @@ const Navigation = (props) => {
   const { currentUser } = useContext(UserContext);
 
   const { role } = useContext(RoleContext);
-  console.log(role);
+
   return (
     <div className="navigation">
       <div className="logo-container">

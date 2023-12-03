@@ -28,10 +28,20 @@ const LsIn = () => {
     const searchString = e.target.value.toLocaleLowerCase();
     setSearchField(searchString);
   };
-  let tongSoTrang = 0;
+  let tongSoTrang = { A3: 0, A4: 0, A5: 0 };
+  ls.map((record) => {
+    tongSoTrang[record.khoGiay] += record.numPage;
+  });
+  let printStr = "Bạn đã in ";
+  for (let key in tongSoTrang) {
+    if (tongSoTrang[key]) {
+      printStr += `${tongSoTrang[key]} trang giấy ${key}, `;
+    }
+  }
+  printStr = printStr.slice(0, -2) + ".";
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <div className="search-box-container">
         <img src={search} alt="Search" className="search-icon" />
         <input
@@ -41,7 +51,7 @@ const LsIn = () => {
           placeholder="Tìm tên tài liệu"
         />
       </div>
-      <table style={{ height: "55vh" }} className="table-history">
+      <table className="table-history">
         <thead>
           <tr>
             <th className="history-title">Thời gian</th>
@@ -55,14 +65,17 @@ const LsIn = () => {
         {/* {console.log(ls)} */}
         <tbody>
           {filteredLs.map((record) => {
-            tongSoTrang += record.numPage;
+            // console.log(record);
+
             return (
               <tr key={record.ma}>
                 <td>{record.date.toDate().toString().slice(0, 24)}</td>
                 <td>{record.ma.slice(0, 5)}</td>
                 <td>{record.printerCode}</td>
                 <td className="filename">{record.name}</td>
-                <td className="price-td">{record.numPage}</td>
+                <td className="price-td">
+                  {record.numPage}({record.khoGiay})
+                </td>
                 <td className="pay-state">
                   {record.printed ? "Printed" : "Received"}
                 </td>
@@ -71,15 +84,16 @@ const LsIn = () => {
           })}
         </tbody>
       </table>
-      <h2
+      <h3
         style={{
-          color: "#1488db",
+          color: "gray",
           textAlign: "center",
+          justifyContent: "flex-end",
         }}
         className="tongsotrang"
       >
-        Tổng số trang đã in (theo khổ giấy A4): {tongSoTrang}
-      </h2>
+        {printStr}
+      </h3>
     </div>
   );
 };

@@ -59,7 +59,7 @@ const Upload_file = ({ setFiles }) => {
         {" "}
         <label className="upload-file-button">
           <input type="file" accept=".doc,.ppt,.pdf" onChange={handleUpload} />{" "}
-            Tải lên file
+          Tải lên file
         </label>
       </form>
       <br />
@@ -83,15 +83,14 @@ const File_item = ({
   useEffect(() => {
     if (isChecked) {
       const soTrang = Math.floor(Math.random() * 40 + 60);
+      const khoGiay = "A4";
       const newDoc = { ...doc };
-      newDoc.list.push({ file_name, soTrang });
+      newDoc.list.push({ file_name, soTrang, khoGiay });
       setDoc(newDoc);
-      console.log(doc);
     } else {
       const newDoc = { ...doc };
       const newList = doc.list.filter((file) => file.file_name != file_name);
       newDoc.list = newList;
-      console.log(newDoc);
       setDoc(newDoc);
     }
   }, [isChecked]);
@@ -103,15 +102,22 @@ const File_item = ({
       if (progress == 100) {
         setStatus("completed");
         setFiles((prevFiles) => {
-          prevFiles.pop(file_name);
-          return prevFiles;
+          const new_file = prevFiles.filter((element) => {
+            return element.name !== file_name;
+          });
+
+          // prevFiles.pop(file_name);
+
+          return new_file;
         });
+
         setCompletedFiles((prevFiles) => [...prevFiles, file_name]);
       }
-      // Clear the timer to avoid memory leaks
-      return () => clearTimeout(timer);
+      // // Clear the timer to avoid memory leaks
+      // return () => clearTimeout(timer);
     } else {
       setProgress(100);
+
       setStatus("completed");
     }
   }, [progress]);

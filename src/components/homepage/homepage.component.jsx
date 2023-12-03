@@ -45,7 +45,6 @@ const Homepage = (props) => {
   const { doc, setDoc } = useContext(DocContext);
   const { role, setRole } = useContext(RoleContext);
   if (currentUser) {
-    console.log(currentUser);
     const fetchData = async () => {
       const data = await getUserInfo(currentUser);
       setRole(data.role);
@@ -107,9 +106,7 @@ const Homepage = (props) => {
           </div>
         )}
         {/* nvia */}
-        {nhanGiaoDich && (
-          <NhanGiaoDichIn openPopup={setNhanGiaoDich}/>
-        )}
+        {nhanGiaoDich && <NhanGiaoDichIn openPopup={setNhanGiaoDich} />}
         {thongTinMayIn && (
           <Popup openPopup={setThongTinMayIn} closeBtn={false}>
             <div className="popup-title">
@@ -235,6 +232,7 @@ const Homepage = (props) => {
                       date: doc.date,
                       printerCode: doc.printer,
                       name: element.file_name,
+                      khoGiay: element.khoGiay,
                       numPage: element.soTrang,
                       printed: false,
                     });

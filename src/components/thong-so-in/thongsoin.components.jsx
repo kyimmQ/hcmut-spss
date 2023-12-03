@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import "./thongsoin.styles.css";
 import Popup from "../popup/popup.component";
 import Button from "../button/button.component";
-import XacNhanGiaoDich from "../xac-nhan-giao-dich/xacnhangiaodich.component";
+
+import { DocContext } from "../../contexts/doc.context";
 
 const ThongSoIn = (props) => {
   // useState var
   // const [xacNhanGiaoDich, setXacNhanGiaoDich] = useState(false);
+  const { doc, setDoc } = useContext(DocContext);
   let printProperties = {};
-
+  const handleChange = (e) => {
+    const newDoc = { ...doc };
+    newDoc.list.forEach((element) => {
+      element.khoGiay = e.target.value;
+    });
+    console.log(newDoc);
+    setDoc(newDoc);
+  };
   return (
     <Popup openPopup={props.openPopup}>
       <div className="container">
@@ -28,10 +37,14 @@ const ThongSoIn = (props) => {
             </div>
             <div className="adjust-row size-select">
               <label htmlFor="">Kích thước:</label>
-              <select name="khogiay" defaultValue={"A4"}>
-                <option value="A4">A3</option>
-                <option value="A3">A4</option>
-                <option value="A3">A5</option>
+              <select
+                name="khogiay"
+                defaultValue={"A4"}
+                onChange={handleChange}
+              >
+                <option value="A3">A3</option>
+                <option value="A4">A4</option>
+                <option value="A5">A5</option>
               </select>
             </div>
             <div className="adjust-row">

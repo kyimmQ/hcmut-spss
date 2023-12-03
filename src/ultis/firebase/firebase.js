@@ -86,7 +86,6 @@ export const getUserInfo = async (currentUser) => {
     let userInfo = {};
     const usersRef = await getDocs(collection(db, `users`));
     usersRef.forEach((doc) => {
-      console.log(doc.id == currentUser.uid);
       if (doc.id == currentUser.uid) userInfo = { ...doc.data() };
     });
     return userInfo;
@@ -128,8 +127,16 @@ export const getPrintHistory = async (currentUser) => {
     );
 
     printRef.forEach((doc) => {
-      const { date, printerCode, name, numPage, printed } = doc.data();
-      printHis.push({ date, printerCode, name, numPage, printed, ma: doc.id });
+      const { date, printerCode, name, numPage, printed, khoGiay } = doc.data();
+      printHis.push({
+        date,
+        printerCode,
+        name,
+        numPage,
+        printed,
+        khoGiay,
+        ma: doc.id,
+      });
     });
     return printHis;
   }
