@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../contexts/user.context";
 import { getPrintHistory } from "../../../ultis/firebase/firebase";
-import search from "../../../assets/search.svg"
+import search from "../../../assets/search.svg";
 
 const LsIn = () => {
   const { currentUser } = useContext(UserContext);
@@ -17,20 +17,23 @@ const LsIn = () => {
   }, []);
 
   useEffect(() => {
-    const newLs = ls.filter((record) => {
-      return record.name.toLocaleLowerCase().includes(searchField);
-    }).slice(0,8);
+    const newLs = ls
+      .filter((record) => {
+        return record.name.toLocaleLowerCase().includes(searchField);
+      })
+      .slice(0, 8);
     setFilteredLs(newLs);
   }, [ls, searchField]);
   const handleSearch = (e) => {
     const searchString = e.target.value.toLocaleLowerCase();
     setSearchField(searchString);
   };
+  let tongSoTrang = 0;
 
   return (
     <div>
       <div className="search-box-container">
-        <img src={search} alt="Search" className="search-icon"/>
+        <img src={search} alt="Search" className="search-icon" />
         <input
           type="search"
           className="search-box"
@@ -38,7 +41,7 @@ const LsIn = () => {
           placeholder="Tìm tên tài liệu"
         />
       </div>
-      <table className="table-history">
+      <table style={{ height: "55vh" }} className="table-history">
         <thead>
           <tr>
             <th className="history-title">Thời gian</th>
@@ -52,6 +55,7 @@ const LsIn = () => {
         {/* {console.log(ls)} */}
         <tbody>
           {filteredLs.map((record) => {
+            tongSoTrang += record.numPage;
             return (
               <tr key={record.ma}>
                 <td>{record.date.toDate().toString().slice(0, 24)}</td>
@@ -59,12 +63,23 @@ const LsIn = () => {
                 <td>{record.printerCode}</td>
                 <td className="filename">{record.name}</td>
                 <td className="price-td">{record.numPage}</td>
-                <td className="pay-state">{record.printed ? "Printed" : "Received"}</td>
+                <td className="pay-state">
+                  {record.printed ? "Printed" : "Received"}
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      <h2
+        style={{
+          color: "#1488db",
+          textAlign: "center",
+        }}
+        className="tongsotrang"
+      >
+        Tổng số trang đã in (theo khổ giấy A4): {tongSoTrang}
+      </h2>
     </div>
   );
 };
