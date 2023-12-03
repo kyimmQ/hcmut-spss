@@ -27,24 +27,24 @@ const TableRow = (props) => {
             <td>{data.docName}</td>
             <td>{data.pageNumber}</td>
             <td>
-            <input type="radio" name={"confirmation"+data.id}  value="Confirm" checked={data.confirmation} readOnly/>
+            <input type="radio" name={"confirmation"+data.id}  value="Confirm" defaultChecked={data.confirmation}/>
             <span >Xác nhận</span>
             <br />
-            <input type="radio" name={"confirmation"+data.id}  value="UnConfirm" checked={!data.confirmation} readOnly/>
+            <input type="radio" name={"confirmation"+data.id}  value="UnConfirm" defaultChecked={!data.confirmation}/>
             <span >Chưa xác nhận</span>
             </td>
             <td>
-            <input type="radio" name={"status"+data.id}  value="Printed" checked={data.status} readOnly/>
+            <input type="radio" name={"status"+data.id}  value="Printed" defaultChecked={data.status}/>
             <span >Đã in</span>
             <br />
-            <input type="radio" name={"status"+data.id}  value="UnPrinted" checked={!data.status} readOnly/>
+            <input type="radio" name={"status"+data.id}  value="UnPrinted" defaultChecked={!data.status}/>
             <span >Chưa in</span>
             </td>
             <td>
-            <input type="radio" name={"delivery"+data.id}  value="Delivered" checked={data.delivery} readOnly/>
+            <input type="radio" name={"delivery"+data.id}  value="Delivered" defaultChecked={data.delivery}/>
             <span >Đã in</span>
             <br />
-            <input type="radio" name={"delivery"+data.id} value="UnDelivered" checked={!data.delivery} readOnly/>
+            <input type="radio" name={"delivery"+data.id} value="UnDelivered" defaultChecked={!data.delivery}/>
             <span >Chưa in</span>
             </td>
         </tr>

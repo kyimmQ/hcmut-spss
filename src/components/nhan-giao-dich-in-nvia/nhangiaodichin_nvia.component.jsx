@@ -78,7 +78,7 @@ const NhanGiaoDichIn = (props) => {
       filterString = filterString.toLowerCase();
       const nameString = data['docName'].toLowerCase();
       //
-      return (nameString.startsWith(filterString));
+      return (nameString.includes(filterString));
     }
 
 
