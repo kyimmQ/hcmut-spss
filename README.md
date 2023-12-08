@@ -6,9 +6,13 @@
 
 1. [Demo](#demo)
 2. [Installation](#installation)
-3. [Contribution](#contribution)
+3. [Contributors](#contributors)
 
 ## Demo
+
+
+https://github.com/kyimmQ/hcmut-spss/assets/118438265/adfbc2f8-614d-4efa-8c77-31c92c0fda11
+
 
 ## Installation
 
@@ -43,7 +47,7 @@
      @abc1234
      ```
 
-## Contributers
+## Contributors
 
 Võ Nguyễn Đoan Thảo - 2110546\
 Nguyễn Châu Long - 2111666\
