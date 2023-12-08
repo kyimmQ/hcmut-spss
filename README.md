@@ -34,7 +34,7 @@ https://github.com/kyimmQ/hcmut-spss/assets/118438265/adfbc2f8-614d-4efa-8c77-31
 
 4. Run the application with `npm start` . Open [http://localhost:3000](http://localhost:3000) to view it in your browser. You can sign in as:
 
-   - A user using you own Google account or :
+   - A user using your own Google account or :
 
      ```
      spssuser.hcmut@gmail.com
